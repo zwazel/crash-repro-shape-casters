@@ -20,3 +20,4 @@ opt-level = 3
 [dependencies]
 bevy = { version = "0.13" }
 bevy_xpbd_3d = { version = "0.4" }
+bevy_turborand = { version = "0.8" }
