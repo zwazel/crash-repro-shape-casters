@@ -21,8 +21,9 @@ fn setup(
     // Spawn ground and generate a collider for the mesh using AsyncCollider
     commands.spawn((
         PbrBundle {
-            mesh: meshes.add(Plane3d::default().mesh().size(8.0, 8.0)),
+            mesh: meshes.add(Plane3d::default().mesh().size(20.0, 20.0)),
             material: materials.add(Color::rgb(0.3, 0.5, 0.3)),
+            transform: Transform::from_xyz(0.0, 0.0, 0.0),
             ..default()
         },
         AsyncCollider(ComputedCollider::TriMesh),
@@ -42,7 +43,7 @@ fn setup(
 
     // Camera
     commands.spawn(Camera3dBundle {
-        transform: Transform::from_xyz(-5.0, 3.5, 5.5).looking_at(Vec3::ZERO, Vec3::Y),
+        transform: Transform::from_xyz(-10.0, 3.5, 10.0).looking_at(Vec3::ZERO, Vec3::Y),
         ..default()
     });
 }
@@ -64,11 +65,13 @@ fn spawn_cubes(
             for k in 0..num_cubes {
                 commands.spawn((
                     PbrBundle {
-                        mesh: meshes.add(Mesh::from(Cuboid::from_size(Vec3::new(1.0, 1.0, 1.0)))),
+                        mesh: meshes.add(Mesh::from(Cuboid::from_size(Vec3::new(
+                            cube_size, cube_size, cube_size,
+                        )))),
                         material: materials.add(Color::rgb_u8(124, 144, 255)),
                         transform: Transform::from_xyz(
                             i as f32 * (cube_size + spacing_between_cubes),
-                            j as f32 * (cube_size + spacing_between_cubes),
+                            j as f32 * (cube_size + spacing_between_cubes) + 2.0,
                             k as f32 * (cube_size + spacing_between_cubes),
                         ),
                         ..default()
