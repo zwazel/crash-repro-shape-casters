@@ -71,7 +71,7 @@ fn spawn_cubes(
                         material: materials.add(Color::rgb_u8(124, 144, 255)),
                         transform: Transform::from_xyz(
                             i as f32 * (cube_size + spacing_between_cubes),
-                            j as f32 * (cube_size + spacing_between_cubes) + 2.0,
+                            j as f32 * (cube_size + spacing_between_cubes) + 5.0,
                             k as f32 * (cube_size + spacing_between_cubes),
                         ),
                         ..default()
